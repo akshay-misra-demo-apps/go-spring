@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"git.tecnotree.com/business-enablement/domv6/go-spring.git/registry"
 )
 
@@ -14,7 +12,7 @@ func init() {
 }
 
 func main() {
-	fmt.Println(registry.Get())
+	//fmt.Println(registry.Get())
 	// Create instances of workers using the registry
 	workerA, errA := registry.CreateWorker("WorkerA")
 	if errA != nil {

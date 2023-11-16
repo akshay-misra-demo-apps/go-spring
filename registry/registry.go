@@ -60,12 +60,15 @@ func AutoRegisterWorkers(pkgPath string) error {
 
 // CreateWorker creates an instance of a registered worker by name.
 func CreateWorker(name string) (api.IWorker, error) {
+	fmt.Println("CreateWorker:: ", workerRegistry)
 	if workerType, ok := workerRegistry[name]; ok {
 		// Create an instance of the registered worker type using reflection
 		workerValue := reflect.New(workerType).Elem()
 		// Check if the created instance satisfies the IWorker interface
 		if worker, ok := workerValue.Interface().(api.IWorker); ok {
 			return worker, nil
+		} else {
+			fmt.Println("worker is not of type 'api.IWorker'.")
 		}
 	}
 	return nil, fmt.Errorf("worker %s is not registered", name)
