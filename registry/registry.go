@@ -68,7 +68,7 @@ func CreateWorker(name string) (api.IWorker, error) {
 		if worker, ok := workerValue.Interface().(api.IWorker); ok {
 			return worker, nil
 		} else {
-			fmt.Println("worker is not of type 'api.IWorker'.")
+			return nil, fmt.Errorf("%s is not of type 'api.IWorker'", name)
 		}
 	}
 	return nil, fmt.Errorf("worker %s is not registered", name)
