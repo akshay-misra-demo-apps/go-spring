@@ -8,3 +8,4 @@ connector-secrets.txt
 *.gz
 /.vscode/
 .DS_Store
+go-spring.git
